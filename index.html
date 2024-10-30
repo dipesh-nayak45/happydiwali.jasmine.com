@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Diwali</title>
+    <style>
+        body {
+            background-color: #282c34;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(243, 156, 18, 0.7);
+            animation: glow-border 1.5s infinite alternate;
+        }
+
+        @keyframes glow-border {
+            0% { border-color: rgba(243, 156, 18, 0.7); }
+            100% { border-color: rgba(243, 156, 18, 1); }
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #f39c12;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+            border: 3px solid transparent;
+            animation: glow-border 1.5s infinite alternate;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #f39c12;
+        }
+
+        #lights {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .light {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 5px;
+            animation: glow-dim 1.5s infinite alternate;
+        }
+
+        @keyframes glow-dim {
+            0% {
+                opacity: 0.5;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 40px rgba(255, 255, 255, 1);
+            }
+        }
+
+        #message {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 2.8em; /* Slightly reduced size */
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+            border: 5px solid transparent;
+            border-radius: 10px;
+            padding: 20px;
+            animation: glow-text 1.5s infinite alternate;
+        }
+
+        @keyframes glow-text {
+            0% {
+                border-color: rgba(243, 156, 18, 0.5);
+                text-shadow: 0 0 10px rgba(243, 156, 18, 1), 0 0 20px rgba(243, 156, 18, 0.7);
+            }
+            100% {
+                border-color: rgba(243, 156, 18, 1);
+                text-shadow: 0 0 20px rgba(243, 156, 18, 1), 0 0 30px rgba(243, 156, 18, 0.7);
+            }
+        }
+
+        /* Cracker effect styles */
+        .cracker {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: explode 0.5s forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(6);
+                opacity: 0;
+            }
+        }
+
+        /* Firework particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: particleAnimation 0.5s forwards;
+        }
+
+        @keyframes particleAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Diya styles */
+        .diya {
+            width: 50px;
+            height: 25px;
+            background-color: #8e44ad;
+            border-radius: 25px 25px 0 0;
+            position: absolute;
+            bottom: 10%;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+        }
+
+        .diya:before {
+            content: '';
+            width: 20px;
+            height: 30px;
+            background-color: #f39c12;
+            border-radius: 50%;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* Positioning of diyas */
+        .top-diya {
+            top: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="diya top-diya" style="left: 5%;"></div>
+    <div class="diya top-diya" style="right: 5%;"></div>
+    <div class="diya" style="left: 5%;"></div>
+    <div class="diya" style="right: 5%;"></div>
+
+    <div class="container" id="mainContent">
+        <h1>Heyy paglii, please burst the crackers👇👇👇!</h1>
+        <button id="burstCrackersBtn">BURST CRACKERS🎆</button>
+    </div>
+    <div id="lights" class="hidden"></div>
+    <div id="message" class="hidden">
+        <h2 style="color: #ff4757;">Happy Diwali, Jasmine!</h2>
+        <p style="color: #1e90ff;">Wishing you the festival of lights, paglii 😊</p>
+        <p style="color: #ff4757;">Your caring friend Dipesh❤️</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const burstCrackersBtn = document.getElementById("burstCrackersBtn");
+            const mainContent = document.getElementById("mainContent");
+            const lightsContainer = document.getElementById("lights");
+            const messageContainer = document.getElementById("message");
+
+            burstCrackersBtn.addEventListener("click", function() {
+                // Hide main content
+                mainContent.classList.add("hidden");
+                lightsContainer.classList.remove("hidden");
+
+                // Create colorful lights
+                const colors = ["#ff4757", "#ffa502", "#2ed573", "#1e90ff", "#9c88ff"];
+                for (let i = 0; i < 10; i++) {
+                    const light = document.createElement("div");
+                    light.className = "light";
+                    light.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    lightsContainer.appendChild(light);
+                }
+
+                // Simulate bursting crackers
+                const totalCrackers = 10; // Total number of crackers
+                for (let i = 0; i < totalCrackers; i++) {
+                    setTimeout(() => {
+                        const cracker = document.createElement("div");
+                        cracker.className = "cracker";
+                        cracker.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        cracker.style.left = Math.random() * 100 + 'vw';
+                        cracker.style.top = Math.random() * 100 + 'vh';
+                        document.body.appendChild(cracker);
+
+                        // Create particles for explosion
+                        for (let j = 0; j < 10; j++) { // Increased particles for more effect
+                            const particle = document.createElement("div");
+                            particle.className = "particle";
+                            particle.style.width = Math.random() * 10 + 5 + 'px'; // Random size
+                            particle.style.height = particle.style.width; // Keep it circular
+                            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                            particle.style.left = cracker.offsetLeft + 15 + 'px'; // Center it
+                            particle.style.top = cracker.offsetTop + 15 + 'px'; // Center it
+                            const angle = Math.random() * 360; // Random angle
+                            const distance = Math.random() * 100; // Increased distance for dramatic effect
+                            const particleDuration = Math.random() * 0.5 + 0.5; // Random duration
+                            particle.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+                            particle.style.animationDuration = particleDuration + 's';
+                            document.body.appendChild(particle);
+
+                            // Remove particle after animation
+                            setTimeout(() => particle.remove(), particleDuration * 1000);
+                        }
+
+                        setTimeout(() => cracker.remove(), 500); // Remove cracker after animation
+                    }, i * 300); // Adjusted delay for more rapid bursting
+                }
+
+                // Show message after a delay
+                setTimeout(() => {
+                    lightsContainer.classList.add("hidden");
+                    messageContainer.classList.remove("hidden");
+                }, totalCrackers * 300 + 1000); // Wait for all crackers to burst
+            });
+        });
+    </script>
+</body>
+</html>
